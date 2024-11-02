@@ -6,6 +6,7 @@ app.use(express.static("public"));
 app.use(express.json());
 
 let secretNumber = Math.floor(Math.random() * 100) + 1;
+console.log(`El número secreto es ${secretNumber}`);
 
 app.post("/guess", (req, res) => {
   const guess = parseInt(req.body.guess);
@@ -14,9 +15,9 @@ app.post("/guess", (req, res) => {
     res.json({ message: "¡Correcto! ¡Has ganado!", status: "success" });
     secretNumber = Math.floor(Math.random() * 100) + 1;
   } else if (guess < secretNumber) {
-    res.json({ message: "El número es mayor", status: "low" });
+    res.json({ message: "El número es mayor" });
   } else {
-    res.json({ message: "El número es menor", status: "high" });
+    res.json({ message: "El número es menor" });
   }
 });
 
