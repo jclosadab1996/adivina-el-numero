@@ -4,6 +4,7 @@ async function makeGuess() {
   const guessInput = document.getElementById("guessInput");
   const messageElement = document.getElementById("message");
   const attemptsElement = document.getElementById("attempts");
+  const successSound = document.getElementById("successSound");
 
   const guess = parseInt(guessInput.value);
 
@@ -31,6 +32,7 @@ async function makeGuess() {
     messageElement.className = data.status === "success" ? "success" : "";
 
     if (data.status === "success") {
+      successSound.play();
       attempts = 0;
       attemptsElement.textContent = `Intentos: ${attempts}`;
       guessInput.value = "";
